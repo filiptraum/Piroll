@@ -539,11 +539,6 @@ body {
           transform: translateY(8px);
 }
 
-.gamburger.open {
-  -webkit-transform: rotateY(360deg) skew(360deg);
-          transform: rotateY(360deg) skew(360deg);
-}
-
 .gamburger.open .gamburger__item {
   -webkit-transform: translateX(-30px);
       -ms-transform: translateX(-30px);
@@ -586,6 +581,7 @@ body {
       -ms-transform: translateY(0%);
           transform: translateY(0%);
   opacity: 1;
+  pointer-events: all;
 }
 
 .header-menu__list {
@@ -721,6 +717,15 @@ body {
   transition: .4s linear;
 }
 
+.canvas-box__btn.replaying,
+.canvas-box__btn.saved,
+.canvas-box__btn.clickedClear,
+.canvas-box__btn.clickedStop {
+  background-color: green !important;
+  border-color: green !important;
+  color: white !important;
+}
+
 .canvas-box__btn:hover,
 .canvas-box__btn:focus {
   background-color: #10c9c3;
@@ -766,6 +771,13 @@ body {
       -ms-transform: translate(-50%, 50%) scale(1);
           transform: translate(-50%, 50%) scale(1);
   opacity: 1;
+}
+
+.canv-btn_replay.error,
+.canv-btn_save.error {
+  background-color: red !important;
+  border-color: red !important;
+  color: white !important;
 }
 
 .canv-btn_save:before {
@@ -1880,6 +1892,12 @@ body {
   }
 }
 
+@media screen and (max-width: 1200px) {
+  .header {
+    padding: 0 15px;
+  }
+}
+
 @media screen and (max-width: 1175px) {
   .home__body {
     padding-right: 60px;
@@ -2074,6 +2092,7 @@ body {
     -webkit-transition: all 0.4s linear;
     -o-transition: all 0.4s linear;
     transition: all 0.4s linear;
+    pointer-events: none;
     z-index: 499;
   }
 
@@ -2242,7 +2261,8 @@ body {
 @media screen and (max-width: 600px) {
   .header-menu {
     background-position: center;
-    bottom: 100%;
+    pointer-events: none;
+    bottom: -100%;
     -webkit-transform: translateY(0%);
         -ms-transform: translateY(0%);
             transform: translateY(0%);
