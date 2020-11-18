@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const gamburger = document.querySelector(gamburderSelector);
     const navigation = document.querySelector(navigationSelector);
     const items = document.querySelectorAll(itemsSelector);
+    const body = document.querySelector('.body');
 
     let menuOpen = false;
     gamburger.addEventListener('click', () => {
@@ -11,10 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
         gamburger.classList.add('open');
         menuOpen = true;
         navigation.classList.add('open');
+        body.classList.add("menuIsOpen");
       } else {
         gamburger.classList.remove('open');
         menuOpen = false;
         navigation.classList.remove('open');
+        body.classList.remove("menuIsOpen");
       }
     });
 
@@ -23,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         gamburger.classList.remove('open');
         menuOpen = false;
         navigation.classList.remove('open');
+        body.classList.remove("menuIsOpen");
       });
     });
   }
@@ -441,20 +445,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   btnsFunction();
 
-  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    canv.addEventListener('touchstart', () => {
-      isMouseDown = true;
-    });
-
-    canv.addEventListener('touchend', () => {
-      isMouseDown = false;
-      ctx.beginPath();
-      coords.push('mouseup')
-    });
-
-    canv.addEventListener('touchmove', (e) => {
-      touchOrMoveFunction(e);
-    });
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || wrapperWidth < 860) {
+    const aboutSection = document.querySelector('.about');
+    aboutSection.classList.add("canvasDontWork");
   } else {
     canv.addEventListener("mousedown", () => {
       isMouseDown = true;

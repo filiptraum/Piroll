@@ -199,6 +199,10 @@ body {
   overflow-x: hidden;
 }
 
+body.menuIsOpen {
+  overflow: hidden;
+}
+
 .scroll-up {
   position: fixed;
   right: 15px;
@@ -595,6 +599,18 @@ body {
 
 .about {
   padding: 110px 0;
+}
+
+.about .ifCanvasDoesNotWork {
+  display: none;
+}
+
+.about.canvasDontWork .ifCanvasDoesNotWork {
+  display: block;
+}
+
+.about.canvasDontWork .canvas-box {
+  display: none;
 }
 
 .about__row {
