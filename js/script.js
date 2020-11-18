@@ -452,7 +452,7 @@ document.addEventListener("DOMContentLoaded", () => {
       coords.push('mouseup')
     });
 
-    canv.addEventListener('touchmove', (e) => {
+    canv.addEventListener('touchenter', (e) => {
       touchOrMoveFunction(e);
     });
   } else {
