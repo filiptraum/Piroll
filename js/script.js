@@ -270,6 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
       replayingInterval;
 
     ctx.fillStyle = "black";
+    ctx.lineWidth = radius * 2;
 
     let wrapperWidth = +document.querySelector(".wrapper").clientWidth;
 
@@ -291,9 +292,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (wrapperWidth > 850) {
         canv.width = 800;
         canv.height = canv.width * 0.75;
+        ctx.lineWidth = radius * 2;
       } else {
         canv.width = wrapperWidth - 30;
         canv.height = canv.width / 0.75;
+        ctx.lineWidth = radius * 2;
       }
     });
 
@@ -302,8 +305,6 @@ document.addEventListener("DOMContentLoaded", () => {
       replayBtn.innerHTML = "Replay<code>( Press R )</code>";
       clearInterval(replayingInterval);
     }
-
-    ctx.lineWidth = radius * 2;
 
     function save() {
       localStorage.setItem("coordsItem", JSON.stringify(coords));
@@ -391,6 +392,9 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector(".about").classList.add("canvasMobile");
       let isTouchstart = false;
 
+      radius = 2;
+      ctx.lineWidth = radius * 2;
+
       function deleteNoNumsForLength() {
         coords.forEach((item, i) => {
           if (item[i] == "touchend") {
@@ -401,6 +405,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       function replay() {
+        ctx.lineWidth = radius * 2;
         replayFuncForBtn();
         let timer = setInterval(() => {
           if (coords.length <= 0) {
@@ -445,6 +450,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       canv.addEventListener("touchmove", (e) => {
         e.preventDefault();
+        ctx.lineWidth = radius * 2;
         if (isTouchstart) {
           let rect = canv.getBoundingClientRect();
           let client = {
@@ -464,6 +470,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     } else {
+      ctx.lineWidth = radius * 2;
       // for computers
       const canvCursor = document.querySelector('.canvas-box__cursor');
 
