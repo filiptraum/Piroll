@@ -609,6 +609,10 @@ body.menuIsOpen {
   min-height: 40px;
 }
 
+.about.canvasMobile .canvas-box__cursor {
+  display: none !important;
+}
+
 .about__row {
   text-align: center;
 }
@@ -692,11 +696,6 @@ body.menuIsOpen {
           transform: translate(-50%, -50%);
   pointer-events: none;
   display: none;
-}
-
-.canvas-box__cursor:active {
-  background-color: black;
-  display: block;
 }
 
 .canvas-box__btns {
@@ -2471,248 +2470,15 @@ body.menuIsOpen {
             flex: 1 1 100%;
   }
 }
+
 @supports (-webkit-appearance:none){
 .wrapper{background-image:url(../img/fon.webp)}
 .home{background-image:url(../img/Home/fon.webp)}
 .skills{background-image:url(../img/Skills/image.webp)}
 }
 
- @media screen and (min-width: 1380px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 1440px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 1380px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 1350px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 1320px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 1200px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 1175px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 1000px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 870px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
  @media screen and (max-width: 860px){
-
 @supports (-webkit-appearance:none){
 .header-menu{background-image:url(../img/Home/fon.webp)}
 }
-
-}
-
- @media screen and (max-width: 850px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 800px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 775px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 750px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 675px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 670px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 665px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 600px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 590px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 585px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 570px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 560px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 550px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 510px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 460px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 430px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 400px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 350px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 340px){
-
-@supports (-webkit-appearance:none){
-
-}
-
-}
-
- @media screen and (max-width: 315px){
-
-@supports (-webkit-appearance:none){
-
-}
-
 }
