@@ -117,67 +117,143 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadMoreWorks();
 
-  let wasWorking = false;
-
-  function outNum(num, elem, parentOfelem, stepNum = 1, timeNum, delay, precentNeed = true) {
-    let el = document.querySelector(elem);
-    let parentEl = document.querySelector(parentOfelem);
+  function outNumPlus(startNum, num, elem, stepNum, timeNum, delay, symbol = '', symbolright = true, needZero = true) {
+    const el = document.querySelector(elem);
 
     const time = +timeNum;
-    let step;
-    if (stepNum == 5) {
-      step = 5;
-    } else if (stepNum == 2) {
-      step = 2;
-    } else {
-      step = 1;
-    }
+    const step = +stepNum
 
-    let n = 0;
-    if (parentEl.classList.contains("no-was-Working")) {
+    let n = startNum;
+    if (el.classList.contains("no-was-Working")) {
       setTimeout(() => {
-        if (parentEl.classList.contains("_anim-active")) {
+        if (el.classList.contains("_anim-active")) {
           setTimeout(() => {
             let timeOut = Math.round(time / (num / step));
             let interval = setInterval(() => {
               n += step;
               if (n == num) {
                 clearInterval(interval);
-              }
-              if (precentNeed) {
-                el.innerText = n + "%";
+                if (symbolright) {
+                  el.innerText = n + symbol;
+                } else {
+                  el.innerText = symbol + n;
+                }
+              } else if (n > num) {
+                clearInterval(interval)
+                if (symbolright) {
+                  el.innerText = num + symbol;
+                } else {
+                  el.innerText = symbol + num;
+                }
               } else {
-                el.innerText = n;
+                let nLenght = n.toString().length;
+                let numLenght = num.toString().length;
+                let zero = '0';
+                if (numLenght > nLenght && needZero) {
+                  for (let i = 1; i < numLenght - nLenght; i++) {
+                    zero += '0';
+                  }
+                  if (symbolright) {
+                    el.innerText = zero + n + symbol;
+                  } else {
+                    el.innerText = symbol + zero + n;
+                  }
+                } else {
+                  if (symbolright) {
+                    el.innerText = n + symbol;
+                  } else {
+                    el.innerText = symbol + n;
+                  }
+                }
               }
             }, timeOut);
           }, delay);
           setTimeout(() => {
-            parentEl.classList.remove("no-was-Working");
-          }, time);
+            el.classList.remove("no-was-Working");
+          }, 350);
         }
       }, 350);
     }
   }
 
-  outNum(75, ".skills_count1", ".skills_item1", 800, 700);
-  outNum(90, ".skills_count2", ".skills_item2", 800, 800);
-  outNum(65, ".skills_count3", ".skills_item3", 800, 850);
+  function outNumMinus(startNum, num, elem, stepNum, timeNum, delay, symbol = '', symbolright = true, needZero = true) {
+    const el = document.querySelector(elem);
 
-  outNum(548, ".statistic_count1", ".statistic_text-content1", 2, 800, 450, false);
-  outNum(1465, ".statistic_count2", ".statistic_text-content2", 5, 800, 550, false);
-  outNum(612, ".statistic_count3", ".statistic_text-content3", 2, 800, 550, false);
-  outNum(736, ".statistic_count4", ".statistic_text-content4", 2, 800, 500, false);
+    const time = +timeNum;
+    const step = +stepNum
+
+    let n = startNum;
+    if (el.classList.contains("no-was-Working")) {
+      setTimeout(() => {
+        if (el.classList.contains("_anim-active")) {
+          setTimeout(() => {
+            let timeOut = Math.round(time / num * step);
+            let interval = setInterval(() => {
+              n -= step;
+              if (n == num) {
+                clearInterval(interval);
+                if (symbolright) {
+                  el.innerText = num + symbol;
+                } else {
+                  el.innerText = symbol + num;
+                }
+              } else if (n < num) {
+                clearInterval(interval)
+                if (symbolright) {
+                  el.innerText = num + symbol;
+                } else {
+                  el.innerText = symbol + num;
+                }
+              } else {
+                let nLenght = n.toString().length;
+                let numLenght = num.toString().length;
+                let zero = '0';
+                if (numLenght > nLenght && needZero) {
+                  for (let i = 1; i < numLenght - nLenght; i++) {
+                    zero += '0';
+                  }
+                  if (symbolright) {
+                    el.innerText = zero + n + symbol;
+                  } else {
+                    el.innerText = symbol + zero + n;
+                  }
+                } else {
+                  if (symbolright) {
+                    el.innerText = n + symbol;
+                  } else {
+                    el.innerText = symbol + n;
+                  }
+                }
+              }
+            }, timeOut);
+          }, delay);
+          setTimeout(() => {
+            el.classList.remove("no-was-Working");
+          }, 350);
+        }
+      }, 350);
+    }
+  }
+
+  outNumPlus(0, 75, ".skills_count1", 1, 800, 700, '%');
+  outNumPlus(0, 90, ".skills_count2", 1, 800, 800, '%');
+  outNumPlus(0, 65, ".skills_count3", 1, 800, 850, '%');
+
+  outNumPlus(0, 548, ".statistic_count1", 2, 800, 450);
+  outNumPlus(0, 1465, ".statistic_count2", 5, 800, 550);
+  outNumPlus(0, 612, ".statistic_count3", 2, 800, 550);
+  outNumPlus(0, 736, ".statistic_count4", 2, 800, 500);
 
   window.addEventListener("scroll", () => {
-    outNum(75, ".skills_count1", ".skills_item1", 800, 700);
-    outNum(90, ".skills_count2", ".skills_item2", 800, 800);
-    outNum(65, ".skills_count3", ".skills_item3", 800, 850);
+    outNumPlus(0, 75, ".skills_count1", 1, 800, 700, '%');
+    outNumPlus(0, 90, ".skills_count2", 1, 800, 800, '%');
+    outNumPlus(0, 65, ".skills_count3", 1, 800, 850, '%');
 
-    outNum(548, ".statistic_count1", ".statistic_text-content1", 2, 800, 450, false);
-    outNum(1465, ".statistic_count2", ".statistic_text-content2", 5, 800, 550, false);
-    outNum(612, ".statistic_count3", ".statistic_text-content3", 2, 800, 550, false);
-    outNum(736, ".statistic_count4", ".statistic_text-content4", 2, 800, 500, false);
-  });
+    outNumPlus(0, 548, ".statistic_count1", 2, 800, 450);
+    outNumPlus(0, 1465, ".statistic_count2", 5, 800, 550);
+    outNumPlus(0, 612, ".statistic_count3", 2, 800, 550);
+    outNumPlus(0, 736, ".statistic_count4", 2, 800, 500);
+  });;
 
   function slider(container, track, btnPrev, btnNext, items) {
 
